@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Votación WebSocket</title>
+</head>
+<body>
+  <h1>Votación en tiempo real</h1>
+
+  <div>
+    <button onclick="votar('opcion1')">Votar Opción 1</button>
+    <button onclick="votar('opcion2')">Votar Opción 2</button>
+    <button onclick="votar('opcion3')">Votar Opción 3</button>
+  </div>
+
+  <h2>Resultados:</h2>
+  <pre id="resultados"></pre>
+
+  <script>
+    const resultados = document.getElementById('resultados');
+    const socket = new WebSocket('ws://localhost:8080');
+
+    socket.onopen = () => {
+      console.log('Conectado al servidor');
+    };
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.action === 'update_results') {
+        resultados.textContent = JSON.stringify(data.votos, null, 2);
+      }
+    };
+
+    function votar(opcion) {
+      socket.send(JSON.stringify({ action: 'new_vote', opcion: opcion }));
+    }
+  </script>
+</body>
+</html>

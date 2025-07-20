@@ -1,0 +1,18 @@
+/votingsystem/
+│
+├── admin_dashboard.php         # Panel para administradores
+├── superadmin_dashboard.php    # Panel para el superadministrador
+├── voter_dashboard.php         # Panel para votantes
+│
+├── login.php                   # Página de inicio de sesión (ya creada)
+├── config.php                  # Archivo de configuración (ya creado)
+├── logout.php                  # Script para cerrar sesión (nuevo)
+│
+├── includes/                   # Directorio para archivos de plantilla y lógica reutilizable
+│   ├── auth_check.php          # Script para verificar autenticación y roles (nuevo)
+│   ├── header.php              # Parte superior común de la página (nuevo)
+│   └── footer.php              # Parte inferior común de la página (nuevo)
+│
+└── assets/                     # Directorio para archivos públicos como CSS, JS, etc.
+    ├── js/                     # Para tus futuros archivos JavaScript
+    └── css/                    # Para tus futuros archivos CSS
